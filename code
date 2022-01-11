@@ -1,0 +1,209 @@
+<html>
+  <head>
+    <title>find your day of birth</title>
+     </head>
+  <canvas id="canvas" width="200" height="200"
+style="background-color:#39">
+
+</canvas>
+
+    <script type="text/javascript">
+     function fn1()
+      {
+        var a=document.getElementById("text1").value;
+        var b=document.getElementById("text2").value;
+        var c=document.getElementById("text3").value;
+     // var hifi=((a+((13*(b+1))/5)+c+(c/4)-(c/100)+(c/400))%7);
+        var h=parseInt(b)+1
+        var i=(h*13)
+        
+        var d=(i/5)
+        var e=(c/4)
+        var f=(c/100)
+        var g=(c/400)
+      
+     var hifi=((a+Math.floor(d)+c+Math.floor(e)-Math.floor(f)+Math.floor(g))%7);
+       
+         var tab=parseInt(Math.floor(d))
+        var tab1=parseInt(Math.floor(e))
+        var tab2=parseInt(Math.floor(f))
+        var tab3=parseInt(Math.floor(g))
+        var ans=parseInt(a)+parseInt(tab)
+        var ans1=parseInt(ans)+parseInt(c)
+        var ans2=parseInt(ans1)+parseInt(tab1)
+        var ans3=parseInt(ans2)-parseInt(tab2)
+        var ans4=parseInt(ans3)+parseInt(tab3)
+        var ans5=parseInt(ans4)%7
+        //var hifi=parseInt(ans4)%7;
+        // document.write(a+"date"+"<br>")        
+        //document.write(b+"month"+"<br>") 
+        //document.write(c+"year"+"<br>")
+     /*  document.write(d+"id"+"<br>")
+        	document.write(e+"yf"+"<br>")
+        document.write(f+"yh"+"<br>")
+        document.write(g+"yfh"+"<br>")
+        document.write(h+"mpo"+"<br>")
+        document.write(i+"mpodt"+"<br>")
+        document.write(hifi+"res"+"<br>")
+        document.write(Math.floor(g)+"yfhfl"+"<br>")
+        //document.write(Math.floor(z)+"<br>")
+       document.write(ans+"ans"+"<br>")
+        document.write(ans1+"ans1"+"<br>")
+         document.write(ans2+"ans2"+"<br>")
+         document.write(ans3+"ans3"+"<br>")
+         document.write(ans4+"ans4"+"<br>")
+        document.write(ans5+"ans5"+"<br>")
+       /* if(b >= 3){
+          b -= 2;
+        }else{
+          b += 10;
+        }
+        if((b == 11)||(b == 12)) c--;
+        var nCentury = parseInt(c / 100);
+        var nYear100 = c % 100;
+        
+        var h = 0;
+        h += parseInt(a);
+        h += parseInt((13 / 5) * b - 0.2);
+        h += parseInt(nYear100);
+        h += parseInt(nYear100 / 4);
+        h += parseInt(nCentury / 4);
+        h -= parseInt(2 * nCentury);
+        h %= 7;
+        if(c >= 1700 && c <= 1751){
+          h -= 3;
+        }else{
+          if(c <= 1699)h -= 4;
+        }
+        if (h < 0) h += 7;*/
+   
+         if(ans5==0){
+         
+            document.getElementById("res").innerHTML=("SATURDAY <br> Finally, Saturday's children come courtesy of Saturn, the god of wealth, freedom, and agriculture (gods had a lot of duties in Roman times). Tragically, this does not mean that Saturday babies will grow up to be rich, but they will be modest, studious, wise, practical, and strict. Fun!");
+          
+        }
+        else if(ans5==1){
+          
+          document.getElementById("res").innerHTML=("SUNDAY <br> According to astrology, people born on Sunday are lucky ducks. Their ruling star is the Sun, which typically means they'll be bright, creative, bold, and loud. Sundays are also the start of the week, suggesting those born on them will be natural leaders. And, of course, if you're using the nursery rhyme as your guiding light, Sunday's babies are a cheery bunch, indeed.");
+        }
+        else if(ans5==2){
+          
+          document.getElementById("res").innerHTML=("MONDAY <br> Monday is ruled by the Moon, which according to astrology, is a maternal entity rooted in dedication to kindness and family. In that vein, people born on Mondays are motherly, sensitive, adaptive, and kind — though the nursery rhyme suggests Monday babies are physically attractive, too. Believe what you wish.");
+        }
+        else if(ans5==3){
+          
+          document.getElementById("res").innerHTML=("TUESDAY <br> In Greek and Roman mythology, Mars (or Ares) is the War God, and so, people born on Tuesdays come with a fiery, fighting spirit. These folks are brave, impatient, energetic, active, and driven to succeed, sometimes to a fault. Or, as the nursery rhyme goes, they're full of grace. The rhyme may be a tad reductive, come to think of it.");
+        }
+        else if(ans5==4){
+          
+          document.getElementById("res").innerHTML=("WEDNESDAY <br> Mercury is the god of finance, travel, and communication — you may remember his Greek counterpart, Hermes, as the sneaker-and-sunglasses-wearing god from the Disney movie Hercules — and so it stands that Wednesday's children are very communicative. They're also versatile, and a bit careless, though so are the best of us. According to the nursery rhyme, they're also very melancholy, but really, that rhyme means nothing.");
+        }
+        else if(ans5==5){
+          
+          document.getElementById("res").innerHTML=("THURSDAY <br> The thur in Thursday is actually derived from the Norse god Thor, who you may recall from the Marvel Avengers series. Unfortunately, people born on Thursdays do not automatically get to resemble Chris Hemsworth, but they do take on many of Thor (or Jupiter, in the Roman)'s personality traits. Thor/Jupiter is optimistic, genial, and generally a fun god to be around, which means Thursday's babies get to be the life of the party. Of course, the nursery rhyme claims Thursday's child has far to go, which, I mean, what the heck, rhyme?");
+        }
+        else if(ans5==6){
+          
+          document.getElementById("res").innerHTML=("FRIDAY <br> My day! Friday is ruled by Venus, the planet of love, balance, beauty, romance, elegance, and pleasure. Yippee! Lucky Friday babies like me are social animals, artistic, and obsessed with beauty and love, though we can also be downright narcissists, which, fair.");
+        }
+      } 
+      function myButton(){
+        location.reload();
+      }
+      var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+   ctx.font="20px Arial";
+  ctx.fillText("suraj",0,40);
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+      
+    </script>
+ 
+  <body>
+    <br/>
+    <input id="text1" type="number"placeholder="Date" />
+    <br />
+    <input id="text2"type="number" placeholder="Month " />
+    <br />
+    <input id="text3" type="number"placeholder="Year" />
+    <br />
+    <button id="btn1" onclick="fn1()">click</button>
+    <button onclick="myButton()">Reset</button>
+    <div id="res"></div>
+  </body>
+</html>
